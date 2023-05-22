@@ -2,7 +2,18 @@
   "name": "winaccent-theme",
   "displayName": "Windows Accent Theme",
   "description": "A Dark Modern color theme modified with Windows System Accent Color",
+  "publisher": "skorzewski",
+  "author": "Paweł Skórzewski",
+  "license": "MIT",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skorzewski/winaccent-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/skorzewski/winaccent-theme/issues"
+  },
+  "homepage": "https://github.com/skorzewski/winaccent-theme#readme",
   "engines": {
     "vscode": "^1.78.0"
   },
