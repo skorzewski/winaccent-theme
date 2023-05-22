@@ -4,15 +4,14 @@
 import * as Color from 'color';
 import * as fs from 'fs';
 import * as path from 'path';
-import { lab2rgb, rgb2lab } from 'rgb-lab';
 import * as vscode from 'vscode';
 import { Registry } from 'winreg-ts';
 import template from './template';
+const rgblab = require('rgb-lab');
 
 
 function componentToHex(c: number) {
 	var hex = Math.round(c).toString(16);
-	console.log(hex);
 	return hex.length === 1 ? "0" + hex : hex;
 }
 
@@ -22,7 +21,6 @@ function rgbToHex(rgb: Array<number>) {
 
 function hexToRgb(hex: string) {
 	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	console.log(result);
 	return result ? [
 		parseInt(result[1], 16),
 		parseInt(result[2], 16),
@@ -58,12 +56,12 @@ function generateColorTheme() {
 	regKey.get("ColorizationColor", function (err, item) {
 		if (err) { throw err; }
 		var colorizationColor: string = item?.value.substring(4) || defaultColor;
-		var colorizationLAB = rgb2lab(hexToRgb(colorizationColor));
-		var defaultLAB = rgb2lab(hexToRgb(defaultColor));
+		var colorizationLAB = rgblab.rgb2lab(hexToRgb(colorizationColor));
+		var defaultLAB = rgblab.rgb2lab(hexToRgb(defaultColor));
 		var l = defaultLAB[0];
 		var a = colorizationLAB[1];
 		var b = colorizationLAB[2];
-		var rgb = lab2rgb([l, a, b]);
+		var rgb = rgblab.lab2rgb([l, a, b]);
 		hex = "#" + rgbToHex(rgb);
 		color = Color(hex);
 		const colorTheme = template(color);
