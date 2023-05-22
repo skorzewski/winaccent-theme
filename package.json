@@ -1,0 +1,57 @@
+{
+  "name": "winaccent-theme",
+  "displayName": "Windows Accent Theme",
+  "description": "A Dark Modern color theme modified with Windows System Accent Color",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "winaccentTheme.update",
+        "title": "Update theme",
+        "category": "Windows Accent Theme"
+      }
+    ],
+    "themes": [
+      {
+        "label": "Dark Modern (Windows System Accent)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/winaccent.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.3",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "color": "^4.2.3",
+    "rgb-lab": "^1.0.0",
+    "winreg-ts": "^1.0.4"
+  }
+}
